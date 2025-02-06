@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { Calendar } from 'react-big-calendar';
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import { addHours} from 'date-fns';
 
 import { CalendarEvent, NavBar } from "../";
 import { localizer, getMessagesES } from '../../helpers/';
-import { useState } from 'react';
+import {CalendarModal} from './'
+
 
 const eventos = [{
   title: 'Cumpleaños de jefe',
@@ -69,6 +72,8 @@ export const CalendarPage = () => {
         onSelectEvent={onSelected}
         onView={onViewChanged}
       />
+
+      <CalendarModal />
     </>
   )
 }
