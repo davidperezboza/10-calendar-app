@@ -57,6 +57,7 @@ export const CalendarModal = () => {
               <DatePicker 
                 selected={formValues.start}
                 className="form-control"
+                wrapperClassName="form-control"
               />
           </div>
 
