@@ -39,6 +39,13 @@ export const CalendarModal = () => {
         setIsOpen(false);
     };
 
+    const onDateChanged = (event, changing) => {
+      setFormValues({
+        ...formValues,
+        [changing]: event,
+      });
+    };
+
     return (
       <Modal
           isOpen={isOpen}
@@ -58,12 +65,21 @@ export const CalendarModal = () => {
                 selected={formValues.start}
                 className="form-control"
                 wrapperClassName="form-control"
+                onChange={(event) => onDateChanged(event, 'start')}
+                dateFormat='Pp'
               />
           </div>
 
           <div className="form-group mb-2">
               <label>Fecha y hora fin</label>
-              <input className="form-control" placeholder="Fecha inicio" />
+              <DatePicker 
+                minDate={formValues.start}
+                selected={formValues.end}
+                className="form-control"
+                wrapperClassName="form-control"
+                onChange={(event) => onDateChanged(event, 'end')}
+                dateFormat='Pp'
+              />
           </div>
 
           <hr />
