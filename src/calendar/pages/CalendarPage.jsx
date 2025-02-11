@@ -8,22 +8,10 @@ import { addHours} from 'date-fns';
 import { CalendarEvent, NavBar } from "../";
 import { localizer, getMessagesES } from '../../helpers/';
 import {CalendarModal} from './'
-import { useUiStore } from '../../hooks';
-
-
-const eventos = [{
-  title: 'Cumpleaños de jefe',
-  notes: 'Hay que comprar el pastel',
-  start: new Date(),
-  end: addHours(new Date(), 2),
-  bgColor: '#fafafa',
-  user: {
-    id: '123',
-    name: 'Fernando',
-  },
-}];
+import { useCalendarStore, useUiStore } from '../../hooks';
 
 export const CalendarPage = () => {
+  const {events} = useCalendarStore();
   const {openDateModal} = useUiStore();
   const [lastVievw, setLastVievw] = useState(localStorage.getItem('lastView') || 'week');
 
@@ -60,7 +48,7 @@ export const CalendarPage = () => {
       <Calendar
         culture='es'
         localizer={localizer}
-        events={eventos}
+        events={events}
         defaultView={lastVievw}
         startAccessor="start"
         endAccessor="end"
