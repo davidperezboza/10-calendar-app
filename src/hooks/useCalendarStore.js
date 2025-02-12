@@ -19,7 +19,7 @@ export const useCalendarStore = () => {
         };
     };
 
-    const deleteEvent = () => {
+    const startDeleteEvent = () => {
         dispatch(onDeleteEvent());
     }
 
@@ -27,10 +27,11 @@ export const useCalendarStore = () => {
         //*Propiedades
         events,
         activeEvent,
+        hasEventSelected: !!activeEvent,
 
         //*Funciones
         setActiveEvent,
         startSavingEvent,
-        deleteEvent,
+        startDeleteEvent,
     };
 }
